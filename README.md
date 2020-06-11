@@ -2,21 +2,49 @@
 # SCDF X IBM Lifesavers Hackathon 
 
 ## Project Description
- **TODO:add project description here**
+    <!--TODO: Create project description-->
 
-##### Roles
- ```````````````
- Hari -> prepare slides and videos / assist moto with node red programming
- lucas -> prepare slides and videos 
- motokey -> make node red architecture and subsystems
- lim pin -> integration of ibm cloud system(if needed) / software version control as well as documentation
- ```````````````
+## Team Composition
+    members of Fluffy Unicorn come from different background and have experience in different feilds. This team'
+    have worked together in various different project primarily on industrial 4.0 projects. Our team comprises of
+    people with background in areonautical engineering , computer engineering , power engineering and 
+    control/industrial engineering
 
-##### Problem statement
+    Team Members includes
+    - Lim Pin
+    - Kabeta Motoki
+    - Hariharan Pillai
+    - Lucas Tay
 
- *will be issued 6pm 12/06/2020*
+## Problem statement
+    *will be issued 6pm 12/06/2020
 
-##### Video name template
-‘FluffyUnicorn: Solution Name_SCDFXIBM’
+## Pitch Video
+    <!-- TODO: change 'Solution Name' below-->
+    ‘FluffyUnicorn: Solution Name_SCDFXIBM’
+
+## Getting started
+    <!-- TODO:write setup intructrion here-->
+
+## Architecture of proposed system
+    <!-- TODO: insert archietecture and basic write up here-->
+
+## Description of solution
+    
+    - Implementation build (what we used to build our solution) 
+    - Tests conducted on the system
+    - Limitation of the system
+    - Scalability of system
+    - Live Demo
+        <!-- TODO: Link to actual solution here --> 
+
+## Project Roadmap / Project Timeline
+     <!-- TODO: insert Project Roadmap and Project timeline write up here-->
+
+
+
+
+
+
 
 
