@@ -5,15 +5,16 @@
     <!--TODO: Create project description-->
 
 ## Team Composition
-    members of Fluffy Unicorn come from different background and have experience in different feilds. This team'
+    Members of Fluffy Unicorn come from different background and have experience in different feilds. This team'
     have worked together in various different project primarily on industrial 4.0 projects. Our team comprises of
-    people with background in areonautical engineering , computer engineering , power engineering and 
-    control/industrial engineering
+    people with background in areonautical engineering , computer engineering, control/industrial engineering and 
+    Biomedical Science
+   
 
     Team Members includes
     - Lim Pin
     - Kabeta Motoki
-    - Hariharan Pillai
+    - Lerene Tong 
     - Lucas Tay
 
 ## Problem statement
@@ -24,7 +25,7 @@
     ‘FluffyUnicorn: Solution Name_SCDFXIBM’
 
 ## Getting started
-    <!-- TODO:write setup intructrion here-->
+    <!-- TODO:write setup intruction here-->
 
 ## Architecture of proposed system
     <!-- TODO: insert archietecture and basic write up here-->
