@@ -5,6 +5,7 @@
 
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include  <ArduinoJson.h>
 
 
 void initialise();
@@ -42,13 +43,23 @@ struct systemHealth
   int fireSensorReading;
   const int fireSensorPin = 36;
   const int batteryStatusPin = 39 ;
-  long latituide , longituide;
+};
 
+struct geoLocation
+{
+  const String apiToken = "a5ed7ca34461c7";
+  const char* Host = "www.unwiredlabs.com";
+  String endpoint = "/v2/process.php";
+  String jsonString =  "{\n";
+  double latitude = 0.0 ;
+  double longitude  = 0.0 ;
+  double accuracy = 0.0;
 };
 
 timeScheduling multiTasking;
 connectionData wifiData;
 systemHealth systemHealth;
+geoLocation geoLocation;
 
 void setup()
 {
@@ -80,9 +91,13 @@ void loop()
     {
       //cloud comms thread
       //will send an update to cloud server every 1 min
-      String parameters = "?sensorValue=262&";
-      parameters += wifiData.MacAddress; 
-      cloudCommunication("StatusUpdate",parameters , currentTime);
+      String parameters = "?";
+      parameters += "Methods="; parameters += "StatusUpdate" ; parameters += "&";
+      parameters += "MacAddress="; parameters += wifiData.MacAddress; parameters ; parameters += "&";
+      parameters += "BatteryLevel="; parameters += systemHealth.batteryPercentage; parameters += "&";
+      parameters += "FireSensorValues="; parameters += systemHealth.fireSensorReading; parameters += "&";
+
+      cloudCommunication("StatusUpdate", parameters , currentTime);
       multiTasking.cloudCommsLastTime = currentTime;
 
     }
@@ -104,17 +119,27 @@ void initialise()
 {
   //Initialise components here
   Serial.begin(9600); // initialise 9600 for now , if bluetooth is used , then switch to 115200
-  wifiInitialise();
-  //TODO: initialise incoming pin for "simulated" sensor
-  //TODO: Get lat long data here
-
+  wifiInitialise();// connect to metwork
+  geoLocationInit();// get location infomations
+  startUpResponse(); // send a signal to command center to inform this device is "alive"
 }
 void wifiInitialise()
 {
   //TODO: Write a method to be able to change the wifi ssid and password either through serial or bluetooth
   // For prototyping/Testing phase is ok to use this method , however it is unacceptable for production phase
+
+  // Set WiFi to station mode and disconnect from an AP if it was previously connected
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
+  Serial.println("Setup done");
+
   wifiData.networkSSID = "MBS_2.4";
   wifiData.networkPassword = "Password1234";
+  // We start by connecting to a WiFi network
+  Serial.print("Connecting to ");
+  Serial.println(wifiData.networkSSID);
+  WiFi.begin( wifiData.networkSSID,  wifiData.networkPassword);
+
   if (wifiData.networkSSID != "" || wifiData.networkPassword != "") //prevent error
   {
     int wifiRetryCounter = 0 ;
@@ -138,11 +163,124 @@ void wifiInitialise()
   }
 }
 
+void geoLocationInit()
+{
+  /**
+     struct geoLocation
+    {
+      const String apiToken = "a5ed7ca34461c7";
+      const char* Host = "www.unwiredlabs.com";
+      String endpoint = "/v2/process.php";
+      String jsonString =  "{\n";
+      double latitude = 0.0 ,
+      double longitude  = 0.0 ;
+      double accuracy = 0.0;
+    };
+  */
+  char bssid[6];
+  DynamicJsonBuffer jsonBuffer;
+  int n = WiFi.scanNetworks();
+  Serial.println("scan done");
+
+  // WiFi.scanNetworks will return the number of networks found
+  if (n == 0 ) {
+    Serial.println("No networks available");
+  } else {
+    Serial.print(n);
+    Serial.println(" networks found");
+  }
+  // now build the jsonString...
+  geoLocation.jsonString = "{\n";
+  geoLocation.jsonString += "\"token\" : \"";
+  geoLocation.jsonString += geoLocation.apiToken;
+  geoLocation.jsonString += "\",\n";
+  geoLocation.jsonString += "\"id\" : \"saikirandevice01\",\n";
+  geoLocation.jsonString += "\"wifi\": [\n";
+  for (int j = 0; j < n; ++j)
+  {
+    geoLocation.jsonString += "{\n";
+    geoLocation.jsonString += "\"bssid\" : \"";
+    geoLocation.jsonString += (WiFi.BSSIDstr(j));
+    geoLocation.jsonString += "\",\n";
+    geoLocation.jsonString += "\"signal\": ";
+    geoLocation.jsonString += WiFi.RSSI(j);
+    geoLocation.jsonString += "\n";
+    if (j < n - 1)
+    {
+      geoLocation.jsonString += "},\n";
+    } else
+    {
+      geoLocation.jsonString += "}\n";
+    }
+  }
+  geoLocation.jsonString += ("]\n");
+  geoLocation.jsonString += ("}\n");
+  //Serial.println(geoLocation.jsonString);
+
+  WiFiClientSecure client;
+  //Connect to the client and make the api call
+  Serial.println("Requesting URL: https://" + (String)geoLocation.Host +  geoLocation.endpoint);
+  if (client.connect(geoLocation.Host, 443))
+  {
+    Serial.println("Connected");
+    client.println("POST " + geoLocation.endpoint + " HTTP/1.1");
+    client.println("Host: " + (String)geoLocation.Host);
+    client.println("Connection: close");
+    client.println("Content-Type: application/json");
+    client.println("User-Agent: Arduino/1.0");
+    client.print("Content-Length: ");
+    client.println( geoLocation.jsonString.length());
+    client.println();
+    client.print( geoLocation.jsonString);
+    delay(500);
+  }
+
+  //recieving the location informations
+  Serial.print("Waiting for response from location server");
+  while (geoLocation.latitude == 0.0 && geoLocation.longitude == 0.0)
+  {
+    String line = client.readStringUntil('\r');
+    JsonObject& root = jsonBuffer.parseObject(line);
+    Serial.print(".");
+    if (root.success())
+    {
+      geoLocation.latitude = root["lat"];
+      geoLocation.longitude = root["lon"];
+      geoLocation.accuracy = root["accuracy"];
+
+      Serial.println();
+      Serial.print("Latitude = ");
+      Serial.println(geoLocation.latitude, 6);
+      Serial.print("Longitude = ");
+      Serial.println(geoLocation.longitude, 6);
+      Serial.print("Accuracy = ");
+      Serial.println(geoLocation.accuracy);
+    }
+  }
+
+  Serial.println("closing connection"); Serial.println();
+  client.stop();
+}
+
+void startUpResponse()
+{
+  readSensorsVal();//get sensor reading for the fist time
+  
+  String parameters = "?";
+  parameters += "Methods="; parameters += "DeviceOnline" ; parameters += "&";
+  parameters += "MacAddress="; parameters += wifiData.MacAddress; parameters ; parameters += "&";
+  parameters += "BatteryLevel="; parameters += systemHealth.batteryPercentage; parameters += "&";
+  parameters += "FireSensorValues="; parameters += systemHealth.fireSensorReading; parameters += "&";
+  parameters += "DeviceLongitude="; parameters += geoLocation.longitude; parameters += "&";
+  parameters += "DeviceLatitude="; parameters += geoLocation.latitude;
+  
+  cloudCommunication("PowerOnInit", parameters , millis());
+}
+
 //========================Hardware/Board Methods=========================
 
 
 /*
-
    struct systemHealth
   {
      int batteryPercentage;
@@ -151,7 +289,6 @@ void wifiInitialise()
      int fireSensorPin = A0;
      int batteryStatusPin = A1;
   }
-
 */
 void getLocationData()
 {
@@ -167,14 +304,44 @@ void readSensorsVal()
   //systemHealth.batteryPercentage = analogRead(systemHealth.batteryStatusPin);
 
   //======Prototype/Testing of sensor readings=================
-  systemHealth.fireSensorReading = random(0, 4095); // since actual reading of analog values will be from 0 - 4095
-  systemHealth.batteryPercentage = random(0, 1023); // maximum reading of battery
+  systemHealth.fireSensorReading = 2048;//random(0, 4095); // since actual reading of analog values will be from 0 - 4095
+  systemHealth.batteryPercentage = 512;//random(0, 1023); // maximum reading of battery
+
+  //systemHealth.batteryPercentage / 204.6 ;//for a 5V battery source , 1023/5 =204.6 (converting adc input to actual voltage)
 
   //for purpose of the prototype , since we do not have any actual fire detector , we will generate random values
-  systemHealth.fireSensorReading = map( systemHealth.fireSensorReading , 0, 4095, 0, 100);
-  systemHealth.batteryPercentage = systemHealth.batteryPercentage / 204.6 ;//for a 5V battery source , 1023/5 =204.6
+  systemHealth.fireSensorReading = map( systemHealth.fireSensorReading , 0, 4095, 0, 80); //TODO: change map value to 0-100
+  systemHealth.batteryPercentage = map( systemHealth.fireSensorReading , 0, 1023, 0, 100); //TODO: change map value to 0-100
+
+  if (systemHealth.fireSensorReading > 75) //TODO: switch this to software interrupt for more responsive respond
+  {
+    //trigger response for fire department and update neighbours here
+
+    String parameters = "?";
+    parameters += "Methods="; parameters += "FIRE alert" ; parameters += "&";
+    parameters += "MacAddress="; parameters += wifiData.MacAddress; parameters ; parameters += "&";
+    parameters += "FireLocatedLat="; parameters += geoLocation.latitude; parameters += "&";
+    parameters += "FireLocatedLong="; parameters +=  geoLocation.longitude; parameters += "&";
+    parameters += "FireSensorValues="; parameters += systemHealth.fireSensorReading;
+
+    cloudCommunication("NotifyFire", parameters, millis());
+  }
+  if (systemHealth.batteryPercentage > 40) //TODO: switch this to software interrupt for more responsive respond
+  {
+    //trigger response to user to inform them the battery level is low
+
+    String parameters = "?";
+    parameters += "Methods="; parameters += "Low battery notice " ; parameters += "&";
+    parameters += "MacAddress="; parameters += wifiData.MacAddress; parameters ; parameters += "&";
+    parameters += "LowBatteryLevelNotice="; parameters += "Low battery" ; parameters += "&";
+    parameters += "BatteryLevel="; parameters += systemHealth.batteryPercentage;
+
+    cloudCommunication("LowBatteryLevelNotice", parameters, millis());
+  }
+
 
 }
+
 
 //========================Communications Methods=========================
 void commandEvent()
@@ -185,7 +352,13 @@ void commandEvent()
   Serial.println(command);
   if (command == "test" )
   {
-    cloudCommunication("test", "?testData = test", millis());
+    String parameters = "?";
+    parameters += "Method="; parameters += "Test" ; parameters += "&";
+    parameters += "MacAddress="; parameters += wifiData.MacAddress; parameters ; parameters += "&";
+    parameters += "BatteryLevel="; parameters += systemHealth.batteryPercentage; parameters += "&";
+    parameters += "FireSensorValues="; parameters += systemHealth.fireSensorReading; parameters += "&";
+
+    cloudCommunication("StatusUpdate", parameters , millis());
   }
   else
   {
