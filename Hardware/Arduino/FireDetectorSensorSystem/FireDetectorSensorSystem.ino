@@ -34,7 +34,7 @@ struct connectionData
 {
   const char* networkSSID = "";
   const char* networkPassword = "";
-  const String serverLink = "https://fluffyunicorn.mybluemix.net/";
+  const String serverLink = "https://fluffyunicornnodered.mybluemix.net/";
   const String MacAddress = WiFi.macAddress();
 };
 struct systemHealth
@@ -310,7 +310,7 @@ void readSensorsVal()
   //systemHealth.batteryPercentage / 204.6 ;//for a 5V battery source , 1023/5 =204.6 (converting adc input to actual voltage)
 
   //for purpose of the prototype , since we do not have any actual fire detector , we will generate random values
-  systemHealth.fireSensorReading = map( systemHealth.fireSensorReading , 0, 4095, 0, 80); //TODO: change map value to 0-100
+  systemHealth.fireSensorReading = map( systemHealth.fireSensorReading , 0, 4095, 0, 100); //TODO: change map value to 0-100
   systemHealth.batteryPercentage = map( systemHealth.fireSensorReading , 0, 1023, 0, 100); //TODO: change map value to 0-100
 
   if (systemHealth.fireSensorReading > 75) //TODO: switch this to software interrupt for more responsive respond
@@ -408,6 +408,8 @@ void cloudCommunication(String apiLink , String parameters , unsigned long timeS
 void sensorMeshReadComm()
 {
   // Listen for other sensor readings
+
+  // TODO: make use of ESP32 node access point to communicate with other 
 }
 void sensorMeshWriteComm()
 {
