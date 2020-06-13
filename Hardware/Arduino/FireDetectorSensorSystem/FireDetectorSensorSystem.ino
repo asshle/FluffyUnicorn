@@ -305,7 +305,7 @@ void readSensorsVal()
 
   //======Prototype/Testing of sensor readings=================
   systemHealth.fireSensorReading = 2048;//random(0, 4095); // since actual reading of analog values will be from 0 - 4095
-  systemHealth.batteryPercentage = 512;//random(0, 1023); // maximum reading of battery
+  systemHealth.batteryPercentage = 1000;//random(0, 1023); // maximum reading of battery
 
   //systemHealth.batteryPercentage / 204.6 ;//for a 5V battery source , 1023/5 =204.6 (converting adc input to actual voltage)
 
@@ -318,7 +318,7 @@ void readSensorsVal()
     //trigger response for fire department and update neighbours here
 
     String parameters = "?";
-    parameters += "Methods="; parameters += "FIRE alert" ; parameters += "&";
+    parameters += "Methods="; parameters += "FireAlert" ; parameters += "&";
     parameters += "MacAddress="; parameters += wifiData.MacAddress; parameters ; parameters += "&";
     parameters += "FireLocatedLat="; parameters += geoLocation.latitude; parameters += "&";
     parameters += "FireLocatedLong="; parameters +=  geoLocation.longitude; parameters += "&";
@@ -331,7 +331,7 @@ void readSensorsVal()
     //trigger response to user to inform them the battery level is low
 
     String parameters = "?";
-    parameters += "Methods="; parameters += "Low battery notice " ; parameters += "&";
+    parameters += "Methods="; parameters += "LowBatteryNotice" ; parameters += "&";
     parameters += "MacAddress="; parameters += wifiData.MacAddress; parameters ; parameters += "&";
     parameters += "LowBatteryLevelNotice="; parameters += "Low battery" ; parameters += "&";
     parameters += "BatteryLevel="; parameters += systemHealth.batteryPercentage;
