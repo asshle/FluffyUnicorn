@@ -34,7 +34,7 @@ struct connectionData
 {
   const char* networkSSID = "";
   const char* networkPassword = "";
-  const String serverLink = "https://fluffyunicornnodered.mybluemix.net/";
+  const String serverLink = "https://fluffyunicornred.mybluemix.net/";
   const String MacAddress = WiFi.macAddress();
 };
 struct systemHealth
@@ -271,8 +271,8 @@ void startUpResponse()
   parameters += "MacAddress="; parameters += wifiData.MacAddress; parameters ; parameters += "&";
   parameters += "BatteryLevel="; parameters += systemHealth.batteryPercentage; parameters += "&";
   parameters += "FireSensorValues="; parameters += systemHealth.fireSensorReading; parameters += "&";
-  parameters += "DeviceLongitude="; parameters += geoLocation.longitude; parameters += "&";
-  parameters += "DeviceLatitude="; parameters += geoLocation.latitude;
+  parameters += "DeviceLongitude="; parameters +=  geoLocation.latitude; parameters += "&";
+  parameters += "DeviceLatitude="; parameters +=geoLocation.longitude ;
   
   cloudCommunication("PowerOnInit", parameters , millis());
 }
