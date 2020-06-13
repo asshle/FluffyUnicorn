@@ -4,7 +4,7 @@
 ## Project Description
     The following solutions consists of prototype implementation of the Residential Smart Fire Alarm , the project 
     consist of various different component ranging from feild IOT sensors to cloud technology. 
-    
+
     The idea for this project comes from analysing major causes of fire in singapore. In 2019 out of 2,826 fire calls , 
     40.8% of them came from residential premises. So the idea for this technology is how can we detect fire in residential 
     area in its early stages where anyone could put out the fire , or when the fire is in it's later stage ,help evacuate 

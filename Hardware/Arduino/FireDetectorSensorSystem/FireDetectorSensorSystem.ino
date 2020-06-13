@@ -311,7 +311,7 @@ void readSensorsVal()
 
   //for purpose of the prototype , since we do not have any actual fire detector , we will generate random values
   systemHealth.fireSensorReading = map( systemHealth.fireSensorReading , 0, 4095, 0, 100); //TODO: change map value to 0-100
-  systemHealth.batteryPercentage = map( systemHealth.fireSensorReading , 0, 1023, 0, 100); //TODO: change map value to 0-100
+  systemHealth.batteryPercentage = map( systemHealth.batteryPercentage , 0, 1023, 0, 100); //TODO: change map value to 0-100
 
   if (systemHealth.fireSensorReading > 75) //TODO: switch this to software interrupt for more responsive respond
   {
