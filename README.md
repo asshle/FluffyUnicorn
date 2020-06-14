@@ -117,7 +117,3 @@ In this project, Node Red is used to channel the data from the ESP32 board to th
     On the Dashboard, we can visualize the data obtained
     Possible fire threats are then shown on the Map
     SCDF can monitor this
-
-   
-## Project Roadmap / Project Timeline
- <!-- TODO: insert Project Roadmap and Project timeline write up here-->
