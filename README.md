@@ -2,7 +2,7 @@
 # SCDF X IBM Lifesavers Hackathon 
 
 ## Project Description
-The following solution consists of prototype implementation of the Residential Smart Fire Alarm with components ranging from field IOT sensors to cloud technology.
+The following solution consists of prototype implementation of the Digital Fire Alarm System with components ranging from field IOT sensors to cloud technology.
 
 Totalling at 1168 counts, fires in residential areas make up 40.8% of fire calls in 2019. From unattended cooking, hastily discarded items in common areas to mishaps from charging of E-scooters/PMA. Fire causes property damage as well as threat to residents living in the area. However, most fires start without warning, and are not responded to until people see smoke and fire - especially when people are asleep or out of the house. In these instances, early indication and intervention is crucial in reducing damage and casualties. So how do we protect ourselves and our neighbourhood?
 
@@ -29,7 +29,7 @@ Team Members includes
 <!-- TODO: Insert youtube pitch link in here-->
 
 ## Architecture of proposed system
-![Residential Smart Fire Alarm System Architecture](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/SystemArchitecture.PNG?raw=true)
+![Digital Fire Alarm System Architecture](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/SystemArchitecture.PNG?raw=true)
 
 ## Getting started
 ### Hardware setup:
