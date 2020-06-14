@@ -29,7 +29,7 @@ Team Members includes
 <!-- TODO: Insert youtube pitch link in here-->
 
 ## Architecture of proposed system
-![Residential Smart Fire Alarm System Architecture](https://github.com/asshle/FluffyUnicorn/blob/master/Assets%20Image/SystemArchitecture.PNG?raw=true)
+![Residential Smart Fire Alarm System Architecture](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/SystemArchitecture.PNG?raw=true)
 
 ## Getting started
 ### Hardware setup:

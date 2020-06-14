@@ -165,18 +165,6 @@ void wifiInitialise()
 
 void geoLocationInit()
 {
-  /**
-     struct geoLocation
-    {
-      const String apiToken = "a5ed7ca34461c7";
-      const char* Host = "www.unwiredlabs.com";
-      String endpoint = "/v2/process.php";
-      String jsonString =  "{\n";
-      double latitude = 0.0 ,
-      double longitude  = 0.0 ;
-      double accuracy = 0.0;
-    };
-  */
   char bssid[6];
   DynamicJsonBuffer jsonBuffer;
   int n = WiFi.scanNetworks();
@@ -278,23 +266,6 @@ void startUpResponse()
 }
 
 //========================Hardware/Board Methods=========================
-
-
-/*
-   struct systemHealth
-  {
-     int batteryPercentage;
-     int fireSensorReading;
-     long latituide , longituide;
-     int fireSensorPin = A0;
-     int batteryStatusPin = A1;
-  }
-*/
-void getLocationData()
-{
-  //get current location data
-
-}
 void readSensorsVal()
 {
   //read fire sensor value here
@@ -326,20 +297,18 @@ void readSensorsVal()
 
     cloudCommunication("NotifyFire", parameters, millis());
   }
-  if (systemHealth.batteryPercentage > 40) //TODO: switch this to software interrupt for more responsive respond
+  if (systemHealth.batteryPercentage < 40) //TODO: switch this to software interrupt for more responsive respond
   {
     //trigger response to user to inform them the battery level is low
 
     String parameters = "?";
     parameters += "Methods="; parameters += "LowBatteryNotice" ; parameters += "&";
     parameters += "MacAddress="; parameters += wifiData.MacAddress; parameters ; parameters += "&";
-    parameters += "LowBatteryLevelNotice="; parameters += "Low battery" ; parameters += "&";
+    parameters += "LowBatteryLevelNotice="; parameters += "LowBattery" ; parameters += "&";
     parameters += "BatteryLevel="; parameters += systemHealth.batteryPercentage;
 
     cloudCommunication("LowBatteryLevelNotice", parameters, millis());
   }
-
-
 }
 
 
