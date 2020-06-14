@@ -78,7 +78,7 @@ code consist of various different function like reading of sensors value, commun
 
 Within the Arduino code, the architecture for the embedded system follows the principle commonly found in operating systems to multitask between different 
 processes. Within the board we managed to program a feature update the node red command center every minute. This will update the command center on the
- system health and other parameter such as (battery level, Fire Sensor Value, Timestamp, Device location)
+system health and other parameter such as (battery level, Fire Sensor Value, Timestamp, Device location)
  
 - Tests conducted on the system
     Due to the short nature of the hackathon we were unable to conduct any real unit tests on this system, but throughout development , we test the functionality
@@ -102,8 +102,8 @@ processes. Within the board we managed to program a feature update the node red 
     computation power to handle the processing of the information 
 
 ### Cloud ImplementationsImplementation build
-    In this project, the wiring tool for IoT devices used is Node Red. Node Red is written in JavaScript. This was an ideal tool as it is easily able to get readings from ESP32 through various methods, and the dashboard function on Node Red is good in showing visual analytics. 
-    In this project, Node Red is used to channel the data from the ESP32 board to the Dashboard, which shows the parameters as stated as above in the hardware implementations. Those data which are considered to be a threat/cause of fire will then be plotted on the mini map on the dashboard, where the user is able to observe.
+In this project, the wiring tool for IoT devices used is Node Red. Node Red is written in JavaScript. This was an ideal tool as it is easily able to get readings from ESP32 through various methods, and the dashboard function on Node Red is good in showing visual analytics. 
+In this project, Node Red is used to channel the data from the ESP32 board to the Dashboard, which shows the parameters as stated as above in the hardware implementations. Those data which are considered to be a threat/cause of fire will then be plotted on the mini map on the dashboard, where the user is able to observe.
 - Tests conducted on the system
     No real tests were conducted on the system, but throughout the development of the project we were able to justify our ideas behind this project. The Mapping of the Data, as well as constructing of the Table of important parameters were working well with dummy data. If there was more time,
     we could implement databases such as Firebase, to be able to give a further thought analysis about the data we can retrieve from the sensors.
