@@ -112,9 +112,9 @@ for scaling the system is that since our device communicates to node red via an 
 computation power to handle the processing of the information 
 
 
-### Cloud ImplementationsImplementation build
+### Cloud Implementations
 In this project, the wiring tool for IoT devices used is Node Red. Node Red is written in JavaScript. This was an ideal tool as it is easily able to get readings from ESP32 through various methods, and the dashboard function on Node Red is good in showing visual analytics. 
-In this project, Node Red is used to channel the data from the ESP32 board to the Dashboard, which shows the parameters as stated as above in the hardware implementations. Those data which are considered to be a threat/cause of fire will then be plotted on the mini map on the dashboard, where the user is able to observe.
+In this project, Node Red is used to channel the data from the ESP32 board to the Dashboard, which shows the parameters as stated as above in the hardware implementations. Those data which are considered to be a threat/cause of fire will then be plotted on the mini map on the dashboard, where SCDF command central is able to observe.
 
 - Tests conducted on the system :
 
@@ -131,3 +131,6 @@ As mentioned in the limitations, Node Red is not an ideal solution for engaging 
 - Implementation Video :
 
 ![Cloud Demostration](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/CloudDemo.gif)
+
+
+##### Last Updated : 14/06/2020 1622
