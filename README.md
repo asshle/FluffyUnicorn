@@ -73,11 +73,10 @@ After following the above instruction, you should be able to run the program wit
 
 ### Hardware Implementations:
 Implementation build
-    In this prototype we used ESP32 dev kit c Wroom as our IOT device, the software for the ESP32 was written in C++ Arduino. The embedded system
-    code consist of various different function like reading of sensors value, communicating with node red command center, as well as communicating with 
-    other IOT device in the vicinity. 
+In this prototype we used ESP32 dev kit c Wroom as our IOT device, the software for the ESP32 was written in C++ Arduino. The embedded system
+code consist of various different function like reading of sensors value, communicating with node red command center, as well as communicating with other IOT device in the vicinity. 
 
-  Within the Arduino code, the architecture for the embedded system follows the principle commonly found in operating systems to multitask between different 
+Within the Arduino code, the architecture for the embedded system follows the principle commonly found in operating systems to multitask between different 
 processes. Within the board we managed to program a feature update the node red command center every minute. This will update the command center on the
  system health and other parameter such as (battery level, Fire Sensor Value, Timestamp, Device location)
  
