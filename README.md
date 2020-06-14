@@ -27,7 +27,7 @@ Team Members includes
 ## Pitch Video
 ‘FluffyUnicorn:DigitalFireAlarmSystem_SCDFXIBM’
 [https://www.youtube.com/watch?v=Y860wdtAmWM](https://www.youtube.com/watch?v=Y860wdtAmWM)
-[![Pitch Video](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/VideoImage?raw=true)](https://www.youtube.com/watch?v=Y860wdtAmWM)
+[![Pitch Video](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/VideoImage.PNG)](https://www.youtube.com/watch?v=Y860wdtAmWM)
 
 ## Architecture of proposed system
 ![Digital Fire Alarm System Architecture](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/SystemArchitecture.PNG?raw=true)
@@ -127,6 +127,6 @@ This is practical for small network prototypes involving to about 20 sensors, bu
 
 As mentioned in the limitations, Node Red is not an ideal solution for engaging numerous customers which will lead to large data. Node.js as a backend service will be able to cover for the areas of Node Red, but it may take some time to do a full system for this.
 
-- Implementation Video
+- Implementation Video :
 
 ![Cloud Demostration](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/CloudDemo.gif)
