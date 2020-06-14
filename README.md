@@ -72,7 +72,7 @@ After following the above instruction, you should be able to run the program wit
 ## Description of solution
 
 ### Hardware Implementations:
--Implementation build
+Implementation build
     In this prototype we used ESP32 dev kit c Wroom as our IOT device, the software for the ESP32 was written in C++ Arduino. The embedded system
     code consist of various different function like reading of sensors value, communicating with node red command center, as well as communicating with 
     other IOT device in the vicinity. 
@@ -102,8 +102,7 @@ processes. Within the board we managed to program a feature update the node red 
     for scaling the system is that since our device communicates to node red via an API, due to high volume of the data coming into the command center , we would require more 
     computation power to handle the processing of the information 
 
-### Cloud Implementations
--Implementation build
+### Cloud ImplementationsImplementation build
     In this project, the wiring tool for IoT devices used is Node Red. Node Red is written in JavaScript. This was an ideal tool as it is easily able to get readings from ESP32 through various methods, and the dashboard function on Node Red is good in showing visual analytics. 
     In this project, Node Red is used to channel the data from the ESP32 board to the Dashboard, which shows the parameters as stated as above in the hardware implementations. Those data which are considered to be a threat/cause of fire will then be plotted on the mini map on the dashboard, where the user is able to observe.
 - Tests conducted on the system
