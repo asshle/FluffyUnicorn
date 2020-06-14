@@ -26,7 +26,8 @@ Team Members includes
 
 ## Pitch Video
 ‘FluffyUnicorn:DigitalFireAlarmSystem_SCDFXIBM’
-[Online Pitch](https://www.youtube.com/watch?v=Y860wdtAmWM)
+[https://www.youtube.com/watch?v=Y860wdtAmWM](https://www.youtube.com/watch?v=Y860wdtAmWM)
+[![Pitch Video](https://www.youtube.com/watch?v=Y860wdtAmWM)](https://www.youtube.com/watch?v=Y860wdtAmWM)
 
 ## Architecture of proposed system
 ![Digital Fire Alarm System Architecture](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/SystemArchitecture.PNG?raw=true)
