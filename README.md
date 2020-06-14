@@ -2,33 +2,17 @@
 # SCDF X IBM Lifesavers Hackathon 
 
 ## Project Description
-The following solutions consists of prototype implementation of the Residential Smart Fire Alarm , the project 
-consist of various different component ranging from feild IOT sensors to cloud technology. 
+The following solution consists of prototype implementation of the Residential Smart Fire Alarm with components ranging from field IOT sensors to cloud technology.
 
-Totaling at 1168 counts, fires in residential areas make up 40.8% of the total number of fire calls in 2019. From unattended cooking, 
-hastily discarded items in common areas to mishaps from charging of E-scooters/PMA, fire causes property damage as well as threat to 
-residents living in the area.However, most fires start without warning, and are not responded to until people see smoke and fire -
-especially when people are asleep or out of the house. In instances as such, early indication and intervention is crucial in reducing 
-damage and casualties.So how do we protect ourselves and our neighborhood?
+Totalling at 1168 counts, fires in residential areas make up 40.8% of fire calls in 2019. From unattended cooking, hastily discarded items in common areas to mishaps from charging of E-scooters/PMA. Fire causes property damage as well as threat to residents living in the area. However, most fires start without warning, and are not responded to until people see smoke and fire - especially when people are asleep or out of the house. In these instances, early indication and intervention is crucial in reducing damage and casualties. So how do we protect ourselves and our neighbourhood?
 
-With our Digital Fire Alarm Device (DFAD), we could detect and respond to the fire within early stages within our vicinity, we will be 
-able cut down the extent of damage to properties and casualties. In the case of minor fires, we would be able to activate Community First Responders 
-(CFR) to assist in putting out the fire immediately, and if the situation is beyond control, will help to evacuate residents in the immediate region. 
-This will set aside valuable SCDF resources/personnels to attend to incidents with a higher priority. 
+With our Digital Fire Alarm Device (DFAD), we could detect and respond to the fire in early stages within our vicinity and will be able cut down the extent of damage to properties and casualties. In cases of minor fires, we would be able to activate Community First Responders (CFR) to assist in putting out the fire immediately, and if the situation is beyond control, will help to evacuate residents in the immediate region. This will set aside valuable SCDF resources and personnel to attend to incidents with a higher priority.
 
-Our solution to this problem will include the pre-existing Home Fire Alarm Device (HFAD), coupled with field IoT sensors to IBM cloud technology. 
-The IoT device, built within the hardware, will act as a field controller for field sensors to detect smoke/fire within the residence, and act as an
-communication module between the sensors and the cloud network. Furthermore, these IoT devices will be added into a mesh network of other IoT devices - 
-and in the event of a fire, create a inter-module communication to localize the fire. According to the severity of the fire, messages will be dispatched 
-through the myResponders app to request CFRs in the vicinity for assistance, meanwhile, notifying residents of the area via emergency alert/notifications 
-to evacuate. In the event that the sensors detect higher levels of fire/smoke, the SCDF will be notified to intervene. 
+Our solution to this problem will include the pre-existing Home Fire Alarm Device (HFAD), coupled with field IoT sensors to IBM cloud technology. The IoT device, built within the hardware, will act as a field controller for field sensors to detect smoke and fire within the residence, and act as a communication module between the sensors and the cloud network. Furthermore, these IoT devices will be added into a mesh network of other IoT devices - and in the event of a fire, create an inter-module communication to localize the fire. According to the severity of the fire, messages will be dispatched through the myResponders app to request CFRs in the vicinity for assistance while notifying residents of the area via emergency alert/notifications to evacuate. In the event that the sensors detect higher levels of fire/smoke, the SCDF will be notified to intervene.
     
 ## Team Composition
 
-Members of Fluffy Unicorn come from different background and have experience in different feilds. This team'
-have worked together in various different project primarily on industrial 4.0 projects. Our team comprises of
-people with background in areonautical engineering , computer engineering, control/industrial engineering and 
-Biomedical Science
+Members of Fluffy Unicorn come from different background and have experience in different fields. This team have worked together in various project primarily on industrial 4.0 projects. Our team comprises of people with background in aeronautical engineering, computer engineering, control/industrial engineering and Biomedical Science.
 
 
 Team Members includes
