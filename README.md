@@ -25,8 +25,9 @@ Team Members includes
    Integrating with a smart environment
 
 ## Pitch Video
-‘FluffyUnicorn:DigitalFireAlarmSystem_SCDFXIBM’
-[https://www.youtube.com/watch?v=Y860wdtAmWM](https://www.youtube.com/watch?v=Y860wdtAmWM)
+‘FluffyUnicorn:DigitalFireAlarmSystem_SCDFXIBM’ : 
+
+- [https://www.youtube.com/watch?v=Y860wdtAmWM](https://www.youtube.com/watch?v=Y860wdtAmWM)
 [![Pitch Video](https://github.com/asshle/FluffyUnicorn/blob/master/Presentation%20Items/Assets%20Image/VideoImage.PNG)](https://www.youtube.com/watch?v=Y860wdtAmWM)
 
 ## Architecture of proposed system
